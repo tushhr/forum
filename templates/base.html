@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/base.scss' %}">
+    <script type="text/javascript" src="{% static 'js/base.js' %}" defer></script>
+
+    <title>{% block title %} {% endblock %} </title>
+    
+    {% block style %}
+    {% endblock %}
+    
+    {% block script %}
+    {% endblock %}
+</head>
+<body>  
+    {% block navbar %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+    
+    {% block footer %}
+    {% endblock %}
+</body>
+</html>
