@@ -1,0 +1,28 @@
+.navbar {
+    @include flex-row;
+
+    gap: 1.6rem;
+    cursor: pointer;
+    color: $secondary-color;
+
+    &__signup, &__signin {
+        @include flex-row-c;
+
+        padding: 0.8rem 1.6rem;
+        border-radius: 0.8rem;
+        font-size: 1.6rem;
+
+        @include mobile {
+            font-size: 1.4rem;
+        }
+    }
+
+    &__signin {
+        background-color: $primary-color;
+        color: $neutral-scale-0;
+    }
+
+    &__signup {
+        border: 0.1rem solid $primary-color;
+    }
+}
