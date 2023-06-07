@@ -1,0 +1,59 @@
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @mixin flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  @mixin flex-row-reverse {
+    @include flex-row;
+  
+    flex-direction: row-reverse;
+  }
+  
+  @mixin justify-c {
+    justify-content: center;
+  }
+  
+  @mixin align-c {
+    align-items: center;
+  }
+  
+  @mixin flex-c {
+    @include align-c;
+    @include justify-c;
+  }
+  
+  @mixin flex-row-c {
+    @include flex-row;
+    @include flex-c;
+  }
+  
+  @mixin flex-col-c {
+    @include flex-col;
+    @include flex-c;
+  }
+  
+  @mixin flex-row-x-c {
+    @include flex-row;
+    @include justify-c;
+  }
+  
+  @mixin flex-row-y-c {
+    @include flex-row;
+    @include align-c;
+  }
+  
+  @mixin flex-col-x-c {
+    @include flex-col;
+    @include align-c;
+  }
+  
+  @mixin flex-col-y-c {
+    @include flex-col;
+    @include justify-c;
+  }
+  

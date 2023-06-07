@@ -1,0 +1,10 @@
+/* line 1, h:/projects/forum/static/styles/landing_page/_navbar.scss */
+.navbar {
+  display: flex;
+  flex-direction: row; }
+
+/* line 4, h:/projects/forum/static/styles/landing_page/index.scss */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  display: flex; }

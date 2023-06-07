@@ -1,0 +1,24 @@
+.navbar {
+    @include flex-row;
+    gap: 1.6rem;
+    cursor: pointer;
+
+    &__signup, &__signin {
+        @include flex-row-c;
+
+        font-size: 2.4rem;
+
+        @include mobile {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__signin {
+        background-color: $primary-color;
+        color: $neutral-scale-0;
+    }
+
+    &__signup {
+
+    }
+}
