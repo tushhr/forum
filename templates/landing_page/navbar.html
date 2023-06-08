@@ -2,7 +2,11 @@
 
 {% block content %}
 <div class="navbar">
-    <div class="navbar__signup">Signup</div>
-    <div class="navbar__signin">Login</div>
+    {% if user.is_authenticated %}
+        <div>Welcome {{ user.username }}</div>
+    {% else %}
+        <div class="navbar__signup">Signup</div>
+        <div class="navbar__signin">Login</div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -2,38 +2,38 @@
     <div class="signup-modal__overlay">
     </div>
 
-    <div class="signin-modal__wrapper">
+    <div class="signup-modal__wrapper">
         <div class="signup-modal__container">
             <div class="signup-modal__title">It's fun inside, come join us!</div>
-            <form action='/accounts/signup' method="POST" class="signup-modal__form">
+            <form action='/accounts/signup' method="POST" class="form">
                 {% csrf_token %}
-                <div class="signin-modal__form-group">
-                    <div class="signin-modal__form-field">
-                        <input type="text" name="name" id="name" class="signin-modal__form-input" required />
-                        <label class="signin-modal__form-label" for="name">Name</label>
+                <div class="form-group">
+                    <div class="form-field">
+                        <input type="text" name="name" id="name" class="form-input" required />
+                        <label class="form-label" for="name">Name</label>
                     </div>
-                    <div class="signin-modal__form-field">
-                        <input type="text" name="username" id="username" class="signin-modal__form-input" required />
-                        <label class="signin-modal__form-label" for="username">Choose a username!</label>
+                    <div class="form-field">
+                        <input type="text" name="username" id="username" class="form-input" required />
+                        <label class="form-label" for="username">Choose a username!</label>
                     </div>
                 </div>
 
-                <div class="signin-modal__form-field">
-                    <input type="text" name="email" id="email" class="signin-modal__form-input" required />
-                    <label class="signin-modal__form-label" for="email">Email?</label>
+                <div class="form-field">
+                    <input type="text" name="email" id="email" class="form-input" required />
+                    <label class="form-label" for="email">Email?</label>
                 </div>
                 
-                <div class="signin-modal__form-group">
-                    <div class="signin-modal__form-field">
-                        <input type="password" name="password" id="password" class="signin-modal__form-input" required />
-                        <label class="signin-modal__form-label" for="password">Shhh...Password?</label>
+                <div class="form-group">
+                    <div class="form-field">
+                        <input type="password" name="password" id="password" class="form-input" required />
+                        <label class="form-label" for="password">Shhh...Password?</label>
                     </div>
-                    <div class="signin-modal__form-field">
-                        <input type="password" name="confirm_password" id="confirm_password" class="signin-modal__form-input" required />
-                        <label class="signin-modal__form-label" for="confirm_password">Confirm Password</label>
+                    <div class="form-field">
+                        <input type="password" name="confirm_password" id="confirm_password" class="form-input" required />
+                        <label class="form-label" for="confirm_password">Confirm Password</label>
                     </div>
                 </div>
-                <button type='submit' name='submit' value='signup' class="signup-modal__form-button">Sign Up</button>
+                <button type='submit' name='submit' value='signup' class="form-button">Sign Up</button>
             </form>
             <div class="signup-modal__signin-trigger">Already an User? Click here to Login!</div>
         </div>

@@ -2,7 +2,6 @@
     @include flex-row;
 
     gap: 1.6rem;
-    cursor: pointer;
     color: $secondary-color;
 
     &__signup, &__signin {
@@ -11,6 +10,7 @@
         padding: 0.8rem 1.6rem;
         border-radius: 0.8rem;
         font-size: 1.6rem;
+        cursor: pointer;
 
         @include mobile {
             font-size: 1.4rem;
