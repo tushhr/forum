@@ -1,0 +1,21 @@
+.thought {
+    &__form-container {
+        .form-label {
+            transition: visibility 0s linear 800ms, opacity 300ms;;
+        }
+
+        .form-input {
+            &:focus, &:valid {
+                & + .form-label, & + .form-label {
+                    transform: translateY(0);
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+        }
+
+        .form-field__checkbox {
+            margin: 0;
+        }
+    }
+}
