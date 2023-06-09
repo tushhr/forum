@@ -71,7 +71,7 @@ def show_post(request, id):
             When(author=current_user, then=Value('True')),
             default=Value('False'),
             output_field=CharField()
-            ),).values('id', 'content', 'date_time', 'author__username', 'anonymous','can_delete')
+            ),).values('id', 'content', 'date_time', 'author__username', 'anonymous','can_delete').order_by('-date_time')
         
         comments = []
         for comment in raw_comments:
