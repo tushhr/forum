@@ -1,6 +1,7 @@
 {% extends 'section.html' %}
 
 {% block content %}
+
 <div class="landing-page">
     <div class="thought__form-container">
         <div class="thought__form-title">Write your thought!</div>
@@ -25,11 +26,13 @@
                       >
                       <span class="form-checkbox__slider round"></span>
                     </label>
-                  </div>
                 </div>
                 <button type='submit' name='submit' value='post' class="form-button">Post!</button>
             </form>
         </div>
     </div>
 </div>
+
+{% include 'landing_page/feed.html' %}
+
 {% endblock %}
