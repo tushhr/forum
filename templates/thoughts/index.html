@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Thought {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/x-scss" href="{% static 'styles/thoughts/index.scss' %}">
+<link rel="stylesheet" type="text/x-scss" href="{% static 'styles/landing_page/index.scss' %}">
+
+{% endblock %}
+
+{% block script %}
+<!-- <script type="text/javascript" src="{% static 'js/landing_page/index.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'js/landing_page/navbar.js' %}" defer></script> -->
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<div class="thought-major" href="/thought/{{ thought.id }}">
+    <div class="thought__info">
+        {% if thought.username|slice:":9" != 'Anonymous' %}
+            <a class="thought__author" href="/profile/{{ thought.username }}">
+                {{ thought.username }}
+            </a>
+        {% else %}
+            <div class="thought__author">
+                {{ thought.username }}
+            </div>
+        {% endif %}
+        <div class="thought__time">
+            {{ thought.date_time }}
+        </div>
+    </div>
+    <div class="thought__content">
+        {{ thought.content }}
+    </div>
+</div>
+
+<div class="thought__form-container">
+        <form action='/thought/{{ thought.id }}/comment' method="POST" class="form">
+            {% csrf_token %}
+            <div class="form-field">
+                <textarea type="text" name="thought" id="thought" class="form-input form-field__textarea" required></textarea>
+                <label class="form-label" for="thought">
+                    Leave a reply..
+                </label>
+            </div>
+            <div class="form-field form-field__checkbox">
+                <div class="field-title">
+                  Wanna be Anonymous?
+                </div>
+                <label class="form-checkbox__label">
+                  <input 
+                    type="checkbox" 
+                    id="anonymous" 
+                    name="anonymous" 
+                    class="form-checkbox"
+                  >
+                  <span class="form-checkbox__slider round"></span>
+                </label>
+            </div>
+            <button type='submit' name='submit' value='post' class="form-button">Post!</button>
+        </form>
+    </div>
+</div>
+
+{% for comment in comments %}
+    <div class="thought">
+        <div class="thought__info">
+            {% if comment.username|slice:":9" != 'Anonymous' %}
+                <a class="thought__author" href="/profile/{{ comment.username }}">
+                    {{ comment.username }}
+                </a>
+            {% else %}
+                <div class="thought__author">
+                    {{ comment.username }}
+                </div>
+            {% endif %}
+            <div class="thought__time">
+                {{ comment.date_time }}
+            </div>
+        </div>
+
+        <div class="thought__content">
+            {{ comment.content }}
+        </div>
+        {% if comment.can_delete == 'True' %}
+        <form action='/thought/delete/comment/{{ comment.id }}' method="POST" class="form">
+            {% csrf_token %}
+            <button type='submit' name='submit' value='post' class="form-button">Delete!</button>
+        </form>
+        {% endif %}
+    </div>
+{% endfor %}
+
+{% endblock %}
