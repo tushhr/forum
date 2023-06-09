@@ -13,14 +13,13 @@ def index(request):
             When(anonymous=True, then=Value('Anonymous')),
             When(anonymous=False, then='author__username'),
             output_field=CharField()
-        )
-    ).annotate(
-        can_delete=Case(
-            When(author=current_user, then=Value('True')),
-            default=Value('False'),
-            output_field=CharField()
-        )
-    ).values('id', 'username', 'content', 'date_time', 'can_delete').order_by('-date_time')
+        )).annotate(
+            can_delete=Case(
+                When(author=current_user, then=Value('True')),
+                default=Value('False'),
+                output_field=CharField()
+            )
+        ).values('id', 'username', 'content', 'date_time', 'can_delete').order_by('-date_time')
 
 
     return render(request, 'landing_page/index.html', {'thoughts': all_thoughts})

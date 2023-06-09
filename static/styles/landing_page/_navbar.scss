@@ -3,6 +3,7 @@
 
     gap: 1.6rem;
     color: $secondary-color;
+    margin-bottom: 2rem;
 
     &__signup, &__signin {
         @include flex-row-c;
