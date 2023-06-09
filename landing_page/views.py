@@ -1,6 +1,8 @@
 from django.db.models import Case, Value, When, CharField
 from django.shortcuts import render
+from django.db.models.functions import Concat
 
+from constants.anonymous_profiles import RESERVED_ANON_NAME
 from thoughts.models import Thought
 
 def index(request):
@@ -10,7 +12,7 @@ def index(request):
     if current_user.is_authenticated:
         all_thoughts = Thought.objects.exclude(status__in = ['2', '3']).annotate(
         username=Case(
-            When(anonymous=True, then=Value('Anonymous')),
+            When(anonymous=True, then=Concat(Value('Anonymous '), Value(RESERVED_ANON_NAME))),
             When(anonymous=False, then='author__username'),
             output_field=CharField()
         )).annotate(

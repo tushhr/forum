@@ -5,15 +5,10 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 import random
 
-from .models import Thought, Comment, Anonymous_Profile
+from constants.anonymous_profiles import RESERVED_ANON_NAME, ANON_NAMES
+from thoughts.models import Thought, Comment, Anonymous_Profile
 
 # Create your views here.
-anon_names = {
-    'blob', 'cirus', 'cena', 'movva', 
-    'snaky', 'orange', 'vintage', 'over', 
-    'cirkut', 'pomy', 'shory', 'jablu',
-    'tinker', 'dumbell', 'napkin', 'table'
-}
 # function to generate Anonymous Names
 def generate_anon_name(thought_id):
     # fetch all the used anonymous name for the specific post
@@ -21,7 +16,7 @@ def generate_anon_name(thought_id):
     used_anon_names = set(used_anon_name['anonymous_name'] for used_anon_name in used_anon_names)
 
     # ignore used anonymous name from all the available anonymous names
-    available_anon_names = anon_names - used_anon_names
+    available_anon_names = ANON_NAMES - used_anon_names
     # randomly choose anonymous name from available list
     anon_name = random.choice(list(available_anon_names))
 
@@ -38,7 +33,8 @@ def create_post(request):
         thought = Thought.objects.create(content = content, author = current_user, anonymous = anonymous)
 
         if anonymous:
-            anon_name = generate_anon_name(thought.id)
+            # reserved anon name given to only Post Owners
+            anon_name = RESERVED_ANON_NAME
             anon_profile = Anonymous_Profile.objects.create(
                 author = current_user, 
                 linked_post = thought, 
