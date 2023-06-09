@@ -14,6 +14,7 @@ class Thought(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     anonymous = models.BooleanField(default=False)
     status = models.CharField(max_length=1, choices=STATUS, default = '1')
+    date_time = models.DateTimeField(auto_now_add=True)
 
 class Comment(models.Model):
     STATUS = (
@@ -29,7 +30,9 @@ class Comment(models.Model):
     status = models.CharField(max_length=1, choices=STATUS, default = '1')
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     linked_post = models.ForeignKey(Thought, on_delete=models.CASCADE, null=False, blank=False)
+    date_time = models.DateTimeField(auto_now_add=True)
 
-class anonymousProfile(models.Model):
+class Anonymous_Profile(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     linked_post = models.ForeignKey(Thought, on_delete=models.CASCADE, null=True, blank=True)
+    anonymous_name = models.CharField(max_length=3000, default="", null=False, blank=False)
