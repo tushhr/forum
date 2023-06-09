@@ -1,6 +1,11 @@
 @import './common/mixin';
 @import './common/section';
 
+body {
+    max-width: 36rem;
+    margin: 0 auto;
+}
+
 .hidden {
     display: none;
 }

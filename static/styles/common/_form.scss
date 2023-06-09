@@ -1,8 +1,6 @@
 @mixin form {
     .form {
         @include flex-col;
-
-        gap: 0.8rem;
     }
 
     .form-group {
@@ -12,7 +10,7 @@
     }
 
     .form-field {
-        font-size: 1.2rem;
+        font-size:0.8rem;
         position: relative;
         margin: 1rem 0;
         border-bottom: 0.1rem solid $secondary-color;
@@ -20,7 +18,7 @@
 
     .form-input {
         border: 0;
-        font-size: 1.2rem;
+        font-size: 0.8rem;
         height: 2.3rem;
         width: 100%;
 
@@ -29,7 +27,7 @@
 
             & + .form-label, & + .form-label {
                 transform: translateY(-1.8rem);
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
         }
     }
@@ -45,19 +43,16 @@
     .form-button {
         @include flex-row-c;
 
-        padding: 0.6rem 1.2rem;
+        padding: 0.6rem 0.8rem;
         margin-left: auto;
         border-radius: 0.8rem;
-        font-size: 1rem;
+        font-size: 0.8rem;
         background-color: $primary-color;
         color: $neutral-scale-0;
         border: 0.1rem solid $color-scale-4;
         cursor: pointer;
         width: fit-content;
 
-        @include mobile {
-            font-size: 1.2rem;
-        }
         &:hover {
             background-color: $color-scale-4;
         }
@@ -65,10 +60,6 @@
         &:active, &:visited {
             background-color: $color-scale-6;
         }
-    }
-
-    .form-field__textarea {
-        height: 4.8rem;
     }
 
     .form-field__checkbox {
@@ -83,8 +74,8 @@
     .form-checkbox {
         &__label {
             position: relative;
-            width: 4.4rem;
-            height: 2.4rem;
+            width: 2rem;
+            height: 1rem;
         
             input {
                 height: 0;
@@ -96,7 +87,7 @@
                 background-color: $color-scale-6;
             
                 &::before {
-                    transform: translateX(2rem);
+                    transform: translateX(1rem);
                 }
             }
         }
@@ -117,9 +108,9 @@
             &::before {
                 position: absolute;
                 content: "";
-                height: 1.6rem;
-                width: 1.6rem;
-                left: 0.4rem;
+                height: 0.6rem;
+                width: 0.6rem;
+                left: 0.2rem;
                 background-color: $neutral-scale-0;
                 transition: 0.4s;
                 border-radius: 50%;
