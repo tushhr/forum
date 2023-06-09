@@ -4,4 +4,7 @@
 
 @import 'navbar';
 @import 'auth';
-@import 'thought';
+@import 'thought-form';
+@import 'feed';
+
+@include form;

@@ -4,13 +4,12 @@
 
 <div class="landing-page">
     <div class="thought__form-container">
-        <div class="thought__form-title">Write your thought!</div>
             <form action='/thought/post' method="POST" class="form">
                 {% csrf_token %}
                 <div class="form-field">
                     <textarea type="text" name="thought" id="thought" class="form-input form-field__textarea" required></textarea>
                     <label class="form-label" for="thought">
-                        Consider it as your safe space... It will always be out lil secret...!
+                        Write your thought! Consider it as your safe space...
                     </label>
                 </div>
                 <div class="form-field form-field__checkbox">
