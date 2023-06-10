@@ -20,12 +20,10 @@
     }
 
     &__content {
-        text-decoration: none;
-        color: $secondary-color;
-
-        &.a {
-            cursor: pointer;
-        }
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
     }
 }
 
