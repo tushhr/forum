@@ -1,9 +1,15 @@
 from django.contrib import messages 
 from django.contrib.auth  import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.db.models import Case, Value, When, CharField, F
+from django.db.models.functions import Concat
 from django.shortcuts import render, HttpResponse, redirect
 import re
+
+from constants.anonymous_profiles import RESERVED_ANON_NAME
+from thoughts.models import Thought, Comment
 
 def index(request):
 	return HttpResponse("Hello, world. You're at the polls index.")
@@ -68,3 +74,83 @@ def sign_in (request):
 			messages.error(request, "Invalid credentials! Please try again")
 	
 	return redirect('/404')
+
+@login_required
+def show_profile(request, profile_username):
+	try:
+		current_user = request.user
+
+		if current_user.username == profile_username:
+			thoughts = Thought.objects.filter(
+							author__username = profile_username, 
+							status__in = ['0', '1']
+						).annotate(
+							username=Case(
+								When(
+									anonymous=True, 
+									then=Concat(Value('Anonymous '), Value(RESERVED_ANON_NAME))
+								),
+								When(
+									anonymous=False, 
+									then='author__username'
+								),
+								output_field=CharField()
+							)
+						).values(
+							'id', 
+							'username', 
+							'content', 
+							'date_time'
+						).order_by('-date_time')
+			
+			comments = Comment.objects.filter(
+							author__username = profile_username, 
+							status__in = ['0', '1']
+						).annotate(
+							username=Case(
+								When(
+									anonymous=True, 
+									then=Value('Anonymous')
+								),
+								When(
+									anonymous=False,
+									then='author__username'
+								),
+								output_field=CharField()
+							)
+						).values(
+							'id', 
+							'username',
+							'content',
+							'date_time'
+						).order_by('-date_time')			
+		else:
+			thoughts = Thought.objects.filter(
+							author__username = profile_username, 
+							status = '0', 
+							anonymous = False
+						).annotate(
+							username=F('author__username')
+						).values(
+							'id', 
+							'username', 
+							'content', 
+							'date_time'
+						).order_by('-date_time')
+
+			comments = Comment.objects.filter(
+							author__username = profile_username, 
+							status = '0', 
+							anonymous = False
+						).annotate(
+							username=F('author__username')
+						).values(
+							'id', 
+							'username', 
+							'content', 
+							'date_time'
+						).order_by('-date_time')
+
+		return render(request, 'accounts/profile.html', {'thoughts': thoughts, 'comments': comments})
+	except:
+		return redirect('/404')
