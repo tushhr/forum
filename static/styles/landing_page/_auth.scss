@@ -12,6 +12,8 @@ $container-shadow-bg: #64646f33;
 
     &__wrapper {
         @include flex-row-x-c;
+
+        position: relative;
     }
 
     &__container {
@@ -19,7 +21,7 @@ $container-shadow-bg: #64646f33;
 
         background-color: $neutral-scale-0;
         gap: 2.4rem;
-        position: relative;
+        position: absolute;
         z-index: 99;
         padding: 2.6rem 3.8rem;
         border-radius: 1.6rem;
