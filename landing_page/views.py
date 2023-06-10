@@ -25,3 +25,6 @@ def index(request):
 
 
     return render(request, 'landing_page/index.html', {'thoughts': all_thoughts})
+
+def error(request):
+    return render(request, 'landing_page/error.html')

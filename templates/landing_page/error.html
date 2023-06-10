@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Error Page {% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'styles/landing_page/index.scss' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="error">
+        Uh, oh!
+        <br>
+        Something went wrong..
+        <br>
+        <br>
+        We have dispatched a highly trained army of minions for the fix..till then 
+        <br>
+        take a deep breath & Relax...
+    </div>
+{% endblock %}
