@@ -1,0 +1,29 @@
+.profile {
+    &__options {
+        @include flex-row;
+
+        justify-content: space-around;
+    }
+
+    &__thoughts, &__comments {
+        cursor: pointer;
+
+        &--active {
+            @include flex-row-x-c;
+            
+            position: relative;
+
+            &:after {
+                content: "\00a0 ";
+                position: absolute;
+                margin-top: 0.2rem;
+                bottom: -0.35rem;
+                width: 6rem;
+                height: 0.2rem;
+                background-color: $primary-color;
+                border-radius: 0.8rem;
+                transition: all 0.3s ease;
+            }
+        }
+    }
+}

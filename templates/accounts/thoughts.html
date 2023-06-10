@@ -1,0 +1,27 @@
+{% for thought in thoughts %}
+    <div class="thought" href="/thought/{{ thought.id }}">
+        <div class="thought__info">
+            {% if thought.username|slice:":9" != 'Anonymous' %}
+                <a class="thought__author" href="/account/{{ thought.username }}">
+                    {{ thought.username }}
+                </a>
+            {% else %}
+                <div class="thought__author">
+                    {{ thought.username }}
+                </div>
+            {% endif %}
+            <div class="thought__time">
+                {{ thought.date_time }}
+            </div>
+        </div>
+        <a class="thought__content" href="/thought/{{ thought.id }}">
+            {{ thought.content }}
+        </a>
+        <!-- {% if thought.can_delete == 'True' %}
+        <form action='/thought/delete/post/{{ thought.id }}' method="POST" class="form">
+            {% csrf_token %}
+            <button type='submit' name='submit' value='post' class="form-button">Delete!</button>
+        </form> -->
+        <!-- {% endif %} -->
+    </div>
+{% endfor %}

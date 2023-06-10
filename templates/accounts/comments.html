@@ -1,0 +1,28 @@
+{% for comment in comments %}
+    <div class="thought">
+        <div class="thought__info">
+            {% if comment.username|slice:":9" != 'Anonymous' %}
+                <a class="thought__author" href="/account/{{ comment.username }}">
+                    {{ comment.username }}
+                </a>
+            {% else %}
+                <div class="thought__author">
+                    {{ comment.username }}
+                </div>
+            {% endif %}
+            <div class="thought__time">
+                {{ comment.date_time }}
+            </div>
+        </div>
+
+        <div class="thought__content">
+            {{ comment.content }}
+        </div>
+        {% if comment.can_delete == 'True' %}
+        <form action='/thought/delete/comment/{{ comment.id }}' method="POST" class="form">
+            {% csrf_token %}
+            <button type='submit' name='submit' value='post' class="form-button">Delete!</button>
+        </form>
+        {% endif %}
+    </div>
+{% endfor %}
