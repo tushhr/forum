@@ -5,7 +5,6 @@
 {% block title %} Thought {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" type="text/x-scss" href="{% static 'styles/thoughts/index.scss' %}">
 <link rel="stylesheet" type="text/x-scss" href="{% static 'styles/landing_page/index.scss' %}">
 
 {% endblock %}
@@ -22,7 +21,7 @@
 <div class="thought-major" href="/thought/{{ thought.id }}">
     <div class="thought__info">
         {% if thought.username|slice:":9" != 'Anonymous' %}
-            <a class="thought__author" href="/profile/{{ thought.username }}">
+            <a class="thought__author" href="/account/{{ thought.username }}">
                 {{ thought.username }}
             </a>
         {% else %}
@@ -71,7 +70,7 @@
     <div class="thought">
         <div class="thought__info">
             {% if comment.username|slice:":9" != 'Anonymous' %}
-                <a class="thought__author" href="/profile/{{ comment.username }}">
+                <a class="thought__author" href="/account/{{ comment.username }}">
                     {{ comment.username }}
                 </a>
             {% else %}

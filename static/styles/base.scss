@@ -1,5 +1,6 @@
 @import './common/mixin';
 @import './common/section';
+@import './common/typography';
 
 body {
     max-width: 36rem;
@@ -8,4 +9,10 @@ body {
 
 .hidden {
     display: none;
+}
+
+a {
+    text-decoration: none;
+    color: $secondary-color;
+    cursor: pointer;
 }
