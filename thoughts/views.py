@@ -108,10 +108,11 @@ def write_comment(request, id):
             anon_name = generate_anon_name(id)
             anon_profile.anonymous_name = anon_name
             anon_profile.save()
-
-    redirect_url = reverse(show_post, kwargs={'id': id})
     
-    # Redirect to the dynamic URL
+    # the page user came from
+    redirect_url = request.META.get('HTTP_REFERER')
+    
+    # Redirect to the URL
     return redirect(redirect_url)
     
 @login_required
@@ -125,7 +126,10 @@ def delete_post(request, id):
             thought.status = '2'
             thought.save()
 
-            return redirect('/')
+            # the page user came from
+            redirect_url = request.META.get('HTTP_REFERER')
+
+            return redirect(redirect_url)
         else:
             return redirect('/404')
     except:
@@ -142,9 +146,9 @@ def delete_comment(request, id):
             comment.status = '2'
             comment.save()
 
-            redirect_url = reverse(show_post, kwargs={'id': comment.linked_post.id})
-    
-            # Redirect to the dynamic URL
+            # the page user came from
+            redirect_url = request.META.get('HTTP_REFERER')
+
             return redirect(redirect_url)
         else:
             return redirect('/404')
