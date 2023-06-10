@@ -5,20 +5,19 @@
 {% block title %} Thought {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" type="text/x-scss" href="{% static 'styles/landing_page/index.scss' %}">
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'styles/landing_page/index.scss' %}">
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src="{% static 'js/accounts/profile.js' %}" defer></script>
-{% endblock %}
-
-{% block navbar %}
-{% include 'landing_page/navbar.html' %}
+    <script type="text/javascript" src="{% static 'js/accounts/profile.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
+<div class="profile__title">
+    {{ username }}'s Profile
+</div>
 <div class="profile__options">
-    <div class="profile__thoughts">Thoughts</div>
+    <div class="profile__thoughts profile__thoughts--active">Thoughts</div>
     <div class="profile__comments">Comments</div>
 </div>
 

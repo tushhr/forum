@@ -40,3 +40,9 @@
     font-size: 3.6rem;
     font-weight: $bold-font-weight;
 }
+
+.basic-details {
+    @include flex-row-c;
+    
+    margin-top: 2rem;
+}

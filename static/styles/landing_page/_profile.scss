@@ -3,6 +3,13 @@
         @include flex-row;
 
         justify-content: space-around;
+        margin-bottom: 1rem;
+    }
+
+    &__title {
+        @include flex-row-c;
+
+        margin: 2rem 0;
     }
 
     &__thoughts, &__comments {
