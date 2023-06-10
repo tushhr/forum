@@ -8,5 +8,6 @@ urlpatterns = [
     path('<int:id>', views.show_post),
     path("<int:id>/comment", views.write_comment),
     path("delete/post/<int:id>", views.delete_post),
+    path("delete/comment/<int:id>", views.delete_comment),
     path("post", views.create_post),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

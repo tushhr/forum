@@ -130,3 +130,23 @@ def delete_post(request, id):
             return redirect('/404')
     except:
         return redirect('/404')
+
+@login_required
+def delete_comment(request, id):
+    try:
+        current_user = request.user
+        comment = Comment.objects.get(id = id, author = current_user)
+        
+        # check whether the author is deleting the comment or not
+        if comment:
+            comment.status = '2'
+            comment.save()
+
+            redirect_url = reverse(show_post, kwargs={'id': comment.linked_post.id})
+    
+            # Redirect to the dynamic URL
+            return redirect(redirect_url)
+        else:
+            return redirect('/404')
+    except:
+        return redirect('/404')
