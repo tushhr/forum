@@ -5,7 +5,7 @@
     <div class="signin-modal__wrapper">
         <div class="signin-modal__container">
             <div class="signin-modal__title">Nice to see you, back!</div>
-            <form action='/accounts/signin' method="POST" class="form">
+            <form action='/account/signin' method="POST" class="form">
                 {% csrf_token %}
                 <div class="form-field">
                     <input type="text" name="username" id="username" class="form-input" required />

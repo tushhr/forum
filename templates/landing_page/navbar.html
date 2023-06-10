@@ -1,12 +1,8 @@
-{% extends 'section.html' %}
-
-{% block content %}
 <div class="navbar">
     {% if user.is_authenticated %}
-        <div>Welcome {{ user.username }}</div>
+        <div>Welcome <a href="/account/{{ user.username }}">{{ user.username }}</a></div>
     {% else %}
         <div class="navbar__signup">Signup</div>
         <div class="navbar__signin">Login</div>
     {% endif %}
 </div>
-{% endblock %}

@@ -6,7 +6,7 @@
         <div class="thought" href="/thought/{{ thought.id }}">
             <div class="thought__info">
                 {% if thought.username|slice:":9" != 'Anonymous' %}
-                    <a class="thought__author" href="/profile/{{ thought.username }}">
+                    <a class="thought__author" href="/account/{{ thought.username }}">
                         {{ thought.username }}
                     </a>
                 {% else %}
