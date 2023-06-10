@@ -2,20 +2,17 @@
     @include flex-row;
 
     gap: 1.6rem;
+    justify-content: flex-end;
     color: $secondary-color;
     margin-bottom: 2rem;
 
     &__signup, &__signin {
         @include flex-row-c;
 
-        padding: 0.8rem 1.6rem;
-        border-radius: 0.8rem;
-        font-size: 1.6rem;
+        padding: 0.6rem 0.8rem;
+        border-radius: 0.4rem;
+        font-size: 0.8rem;
         cursor: pointer;
-
-        @include mobile {
-            font-size: 1.4rem;
-        }
     }
 
     &__signin {
