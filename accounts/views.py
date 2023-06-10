@@ -11,9 +11,6 @@ import re
 from constants.anonymous_profiles import RESERVED_ANON_NAME
 from thoughts.models import Thought, Comment
 
-def index(request):
-	return HttpResponse("Hello, world. You're at the polls index.")
-
 def validate_email(email):
 	pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 	return re.match(pattern, email) is not None
@@ -73,7 +70,7 @@ def sign_in (request):
 		else:
 			messages.error(request, "Invalid credentials! Please try again")
 	
-	return redirect('/404')
+	return redirect('/')
 
 @login_required
 def show_profile(request, profile_username):
@@ -151,6 +148,6 @@ def show_profile(request, profile_username):
 							'date_time'
 						).order_by('-date_time')
 
-		return render(request, 'accounts/profile.html', {'thoughts': thoughts, 'comments': comments})
+		return render(request, 'accounts/profile.html', {'thoughts': thoughts, 'comments': comments, 'username': profile_username})
 	except:
 		return redirect('/404')

@@ -50,7 +50,7 @@ def show_post(request, id):
     try:
         current_user  = request.user
         # fetch the thought with the specific id
-        thought = Thought.objects.filter(id = id).annotate(
+        thought = Thought.objects.filter(id = id, status__in = ['0', '1']).annotate(
         username = Case(
             When(anonymous=True, then=Concat(Value('Anonymous '), 'anonymous_profile__anonymous_name')),
             When(anonymous=False, then='author__username'),
@@ -66,7 +66,7 @@ def show_post(request, id):
 
         # fetch all the comments for the specific post
         # with all the confidential information
-        raw_comments = Comment.objects.filter(linked_post = id).annotate(
+        raw_comments = Comment.objects.filter(linked_post = id, status__in = ['0', '1']).annotate(
             can_delete=Case(
             When(author=current_user, then=Value('True')),
             default=Value('False'),
