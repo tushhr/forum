@@ -24,3 +24,9 @@
         border: 0.1rem solid $primary-color;
     }
 }
+
+.logout-button {
+    border: none;
+    background-color: $neutral-scale-0;
+    cursor: pointer;
+}

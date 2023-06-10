@@ -72,6 +72,10 @@ def sign_in (request):
 	
 	return redirect('/')
 
+def sign_out(request):
+	auth_logout(request)
+	return redirect('/')
+
 @login_required
 def show_profile(request, profile_username):
 	try:
