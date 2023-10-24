@@ -32,6 +32,11 @@ A web app, built to share your thoughts, & feelings.
 ![Screenshot 2023-10-24 170952](https://github.com/tushhr/forum/assets/63875632/00582883-5f79-4c70-a07e-b1b4e67a1762)
 
 
+### To-Do
+- [ ] Add Dark Theme
+- [ ] Feature for journaling
+- [ ] Message Feature
+
 ## This project is developed by
 
 Tushar Maheshwari - [tushhr.me](https://tushhr.me)
